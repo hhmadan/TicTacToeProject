@@ -33,7 +33,11 @@ public class TicTacToe {
                 }
                 playerMoves(playerChoice, letter,ticTacToeBoard);
                 //CHECK WIN TIE OR CHANGE TURN...
-
+                String output = checkStatus();
+                if(output.length()>0){
+                    System.out.println(output);
+                    break;
+                }
                 System.out.println("Current Positions of Game Board is...");
                 showBoard(ticTacToeBoard);
                 System.out.println("\n");
@@ -45,6 +49,11 @@ public class TicTacToe {
             }
                 System.out.println("Current Positions of Game Board is...");
                 showBoard(ticTacToeBoard);
+                output = checkStatus();
+                if(output.length()>0){
+                    System.out.println(output);
+                    break;
+                }
             }
             else{
                 System.out.println("COMPUTER PLAYING...");          //Computer's Turn
@@ -55,7 +64,11 @@ public class TicTacToe {
                 }
                 System.out.println("Current Positions of Game Board is");
                 showBoard(ticTacToeBoard);
-
+                String output = checkStatus();
+                if(output.length()>0){
+                    System.out.println(output);
+                    break;
+                }
                 System.out.println("Its Your Turn..! Enter position to mark: ");
                 int playerChoice = sc.nextInt();
                 letter = 'O';
@@ -68,7 +81,7 @@ public class TicTacToe {
             System.out.println("Current Positions of Game Board is...");
             showBoard(ticTacToeBoard);
         }
-    }
+        }
     public static void showBoard (char[][] ticTacToeBoard){
         for (char[] row : ticTacToeBoard) {
             for (char column : row) {
@@ -163,5 +176,37 @@ public class TicTacToe {
             default:
                 break;
         }
+    }
+
+    public static String checkStatus(){
+        List firstRow = Arrays.asList(1, 2, 3);
+        List midRow = Arrays.asList(4, 5, 6);
+        List lastRow = Arrays.asList(7, 8, 9);
+        List firstCol = Arrays.asList(1, 4, 7);
+        List midCol = Arrays.asList(2, 5, 8);
+        List lastCol = Arrays.asList(3, 6, 9);
+        List diagonal1 = Arrays.asList(1, 5, 9);
+        List diagonal2 = Arrays.asList(3, 5, 7);
+
+        List<List> winning = new ArrayList<List>();
+        winning.add(firstRow);
+        winning.add(midRow);
+        winning.add(lastRow);
+        winning.add(firstCol);
+        winning.add(midCol);
+        winning.add(lastCol);
+        winning.add(diagonal1);
+        winning.add(diagonal2);
+
+        for(List list : winning) {
+            if (playerPos.containsAll(list)) {
+                return "CONGRATULATIONS..! YOU WON";
+            } else if (computerPos.containsAll(list)) {
+                return "OOPS..! COMPUTER WON";
+            } else if (playerPos.size() + computerPos.size() == 9) {
+                return "ITS TIE..!";
+            }
+        }
+        return "";
     }
 }
