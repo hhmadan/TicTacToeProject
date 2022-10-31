@@ -21,6 +21,8 @@ public class TicTacToe {
         secondGame();
     }
         public static void startGame(){
+            playerPos.clear();
+            computerPos.clear();
             char[][] ticTacToeBoard = {{' ', '|', ' ', '|', ' '},
                     {'-', '+', '-', '+', '-'},
                     {' ', '|', ' ', '|', ' '},
@@ -371,7 +373,8 @@ public class TicTacToe {
         while (true){
         if(playAgainChoice == 'Y' || playAgainChoice =='y'){
             startGame();
-            secondGame();
+            playerPos.clear();
+            computerPos.clear();
             break;
         }
         else if(playAgainChoice == 'N' || playAgainChoice =='n'){
