@@ -16,14 +16,18 @@ public class TicTacToe {
     final static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        char[][] ticTacToeBoard = {{' ', '|', ' ', '|', ' '},
-                {'-', '+', '-', '+', '-'},
-                {' ', '|', ' ', '|', ' '},
-                {'-', '+', '-', '+', '-'},
-                {' ', '|', ' ', '|', ' '}};
 
-        showBoard(ticTacToeBoard);
-        int turnResult=whoseTurn();
+        startGame();
+        secondGame();
+    }
+        public static void startGame(){
+            char[][] ticTacToeBoard = {{' ', '|', ' ', '|', ' '},
+                    {'-', '+', '-', '+', '-'},
+                    {' ', '|', ' ', '|', ' '},
+                    {'-', '+', '-', '+', '-'},
+                    {' ', '|', ' ', '|', ' '}};
+            showBoard(ticTacToeBoard);
+            int turnResult=whoseTurn();
         if(turnResult==1){
             for(int i=1;i<=ticTacToeBoard.length;i++){
                 System.out.println("Enter Position between 1-9 ");
@@ -37,6 +41,7 @@ public class TicTacToe {
                 String status=checkStatus();
                 if(status.length()>0){
                     System.out.println(status);
+                    secondGame();
                     break;
                 }
                 //Displaying current Game Board Position
@@ -59,6 +64,7 @@ public class TicTacToe {
                 status=checkStatus();
                 if(status.length()>0){
                     System.out.println(status);
+                    secondGame();
                     break;
                 }
             }
@@ -79,6 +85,7 @@ public class TicTacToe {
                 String status=checkStatus();
                 if(status.length()>0){
                     System.out.println(status);
+                    secondGame();
                     break;
                 }
                 System.out.println("Enter Position between 1-9 ");
@@ -93,6 +100,7 @@ public class TicTacToe {
                 status=checkStatus();
                 if(status.length()>0){
                     System.out.println(status);
+                    secondGame();
                     break;
                 }
                 //Displaying current Game Board Position
@@ -357,7 +365,19 @@ public class TicTacToe {
         }
         return "";
     }
-
-}
+    public static void secondGame(){
+        System.out.println("You Want to Play Again..? Press Y for Yes or N for No");
+        char playAgainChoice = sc.next().charAt(0);
+        while (true){
+        if(playAgainChoice == 'Y' || playAgainChoice =='y'){
+            startGame();
+            secondGame();
+            break;
+        }
+        else if(playAgainChoice == 'N' || playAgainChoice =='n'){
+            System.exit(0);
+        }
+    }
+}}
 
 
