@@ -15,6 +15,10 @@ public class TicTacToe {
         System.out.println("What you want==> X or O? Enter..");
         char letter = sc.next().charAt(0);
         System.out.println(letter);
+
+        System.out.println("Current Game Board Position");
+        showBoard(ticTacToeBoard);
+        System.out.println("\n");
     }
     public static void showBoard(char [][] ticTacToeBoard){
         for(char[] row : ticTacToeBoard){
