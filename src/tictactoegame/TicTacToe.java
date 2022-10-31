@@ -1,8 +1,23 @@
 package tictactoegame;
 
+import java.util.Scanner;
+
 public class TicTacToe {
     public static void main(String[] args) {
-        System.out.println("Welcome to Tic Tac Toe Game");
+        char[][] ticTacToeBoard = {{' ', '|', ' ', '|', ' '},
+                {'-', '+', '-', '+', '-'},
+                {' ', '|', ' ', '|', ' '},
+                {'-', '+', '-', '+', '-'},
+                {' ', '|', ' ', '|', ' '}};
 
+        showBoard(ticTacToeBoard);
+    }
+    public static void showBoard(char [][] ticTacToeBoard){
+        for(char[] row : ticTacToeBoard){
+            for(char column : row){
+                System.out.print(column);
+            }
+            System.out.println();
+        }
     }
 }
